@@ -1,0 +1,10 @@
+# Git attributes file allows us to standardize how git will manage certain file types.
+#   Used to maintain consitent behavior without the need for extensive manual
+#   environment configuration.
+
+# Force LF runing in WSL and for local docker builds.
+* text eol=lf
+
+# Set imagefile to be recognized as binary.
+*.png binary
+*.jpg binary
