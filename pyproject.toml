@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "doggo-discriminator"
 version = "0.1.0"
-description = "Labeling Interface for the Stanford dog data set"
+description = "A silly labeling interface for the stanford dog data set"
 authors = ["Ali Soliman <atestsoliman@gmail.com>"]
 
 [tool.poetry.dependencies]
@@ -10,6 +10,8 @@ pydantic = "^1.9.0"
 requests = "^2.27.1"
 coverage = {extras = ["toml"], version = "^6.3.2"}
 email-validator = "^1.1.3"
+typer = "^0.4.1"
+Pillow = "^9.1.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.1"
@@ -26,6 +28,7 @@ flake8-docstrings = "^1.6.0"
 pep8-naming = "^0.12.1"
 flake8-bugbear = "^22.3.23"
 types-requests = "^2.27.19"
+types-Pillow = "^9.0.13"
 
 [tool.black]
 verbose = true
@@ -38,13 +41,16 @@ lines_after_imports = 2
 source = ["doggo_discriminator/**", "*/site-packages"]
 tests = ["tests", "*/tests"]
 
+
 [tool.coverage.run]
 branch = true
 source = ["doggo_discriminator", "tests"]
+omit = ["doggo_discriminator/interfaces/typer_demo.py"]
 
 [tool.coverage.report]
 show_missing = true
 fail_under = 100
+omit = ["doggo_discriminator/interfaces/typer_demo.py"]
 
 [tool.mypy]
 strict = true
