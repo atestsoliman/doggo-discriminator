@@ -160,4 +160,5 @@ cython_debug/
 .idea/
 .vscode/
 **/temp_dog.png
+**/label_cache.jsonl
 © 2022 GitHub, Inc.

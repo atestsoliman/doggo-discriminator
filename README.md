@@ -5,10 +5,10 @@ A deliberately over-engineered tool for categorizing dogs and having fun with py
 This is a personal project that has only been test on one machine. Please open an issue if these instructions don't work for you.
 1. Clone the repo
 2. Create an environment with `poetry install`
-3. Try the test suite with `pre-commit run --all-files`
-4. Try the sample app `python doggo_discriminator/interfaces/typer_demo.py label-dogs`
+3. Try the sample app `dogs --help`
     - Follow the prompts!
     - Have fun!
+4. Try the test suite with `pre-commit install` and `pre-commit run --all-files`
 5. Look at the code.
 
 ## Structure
