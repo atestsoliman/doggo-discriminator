@@ -5,7 +5,7 @@ description = "A silly labeling interface for the stanford dog data set"
 authors = ["Ali Soliman <atestsoliman@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.8"
 pydantic = "^1.9.0"
 requests = "^2.27.1"
 coverage = {extras = ["toml"], version = "^6.3.2"}
@@ -29,6 +29,9 @@ pep8-naming = "^0.12.1"
 flake8-bugbear = "^22.3.23"
 types-requests = "^2.27.19"
 types-Pillow = "^9.0.13"
+
+[tool.poetry.scripts]
+dogs = "doggo_discriminator.interfaces.typer_demo:main"
 
 [tool.black]
 verbose = true

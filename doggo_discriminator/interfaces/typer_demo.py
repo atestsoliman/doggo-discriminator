@@ -104,5 +104,10 @@ def label_dogs(
             break
 
 
-if __name__ == "__main__":
+def main() -> None:
+    """Entry point for scritps."""
     app()
+
+
+if __name__ == "__main__":
+    main()
