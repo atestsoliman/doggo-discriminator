@@ -13,6 +13,7 @@ from doggo_discriminator.core.models import (
     LabelAssingment,
     LabeledDatum,
 )
+from doggo_discriminator.data_sources.dog_api import Dog, DogSource
 
 
 @fixture
@@ -102,3 +103,11 @@ def test_record_label(new_datum: BaseDatum, new_labeler: BaseLabeler) -> None:
     assert labeled.assignments[0].labeler == new_labeler
     assert type(labeled.assignments[0].datum) is BaseDatum
     assert type(labeled.assignments[0].datum) is not LabeledDatum
+
+
+def test_record_object_valued_label(new_labeler: BaseLabeler) -> None:
+    """Tests that a data item with an object value has it's type preserved."""
+    src = DogSource()
+    object_datum = src.fetch()
+    labeled = LabeledDatum.from_base_datum(object_datum)
+    assert isinstance(labeled.value, Dog)

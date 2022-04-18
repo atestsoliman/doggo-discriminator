@@ -105,8 +105,16 @@ class LabeledDatum(BaseDatum):
     ground_label: Optional[BaseLabel]
     assignments: List[LabelAssingment]
 
+    def base(self) -> BaseDatum:
+        """Returns an unlabeled version of this datum."""
+        return BaseDatum(id=self.id, value=self.value)
+
     @staticmethod
-    def from_base_datum(base: BaseDatum) -> LabeledDatum:
+    def from_base_datum(
+        base: BaseDatum,
+        ground_label: Optional[BaseLabel] = None,
+        assignments: Optional[List[LabelAssingment]] = None,
+    ) -> LabeledDatum:
         """Static method for constucting a new LabeledDatum for a BaseDatum.
 
         The new Labeled datum will have the same id and value as the base
@@ -117,7 +125,7 @@ class LabeledDatum(BaseDatum):
         Returns:
             LabeledDatum: a new LabeledDatum with no assigned labels.
         """
-        return LabeledDatum(**base.dict(), assignments=[])
+        return LabeledDatum(id=base.id, value=base.value, assignments=[])
 
     def record_label(self, labeler: BaseLabeler, label: BaseLabel) -> LabelAssingment:
         """Create a new LabelAssignment and add it to the list of label assingments.
@@ -133,7 +141,7 @@ class LabeledDatum(BaseDatum):
             LabelAssingment: for conveniance this method return the new lable assinment.
         """
         new_assignment: LabelAssingment = LabelAssingment(
-            labeler=labeler, label=label, datum=BaseDatum(**self.dict())
+            labeler=labeler, label=label, datum=self.base()
         )
 
         self.assignments.append(new_assignment)
